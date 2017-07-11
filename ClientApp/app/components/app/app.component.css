@@ -7,11 +7,6 @@
 
 .body-content {
     padding: 15px;
-    grid-area: main;
-    display: inline-grid;
-    grid-template-areas:
-        "links sidebar";
-    min-height: calc(100vh - 86px);
 }
 
 #topbar {

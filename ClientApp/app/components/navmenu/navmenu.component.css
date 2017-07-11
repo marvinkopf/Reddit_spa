@@ -16,11 +16,11 @@ li.link-active a:focus {
 }
 
 .main-nav>:first-child {
-    margin-left: 45px;
+    margin-left: 60px;
 }
 
 .main-nav>:last-child {
-    margin-right: 45px;
+    margin-right: 60px;
 }
 
 .navbar {

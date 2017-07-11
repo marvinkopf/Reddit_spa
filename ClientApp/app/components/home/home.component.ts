@@ -4,7 +4,8 @@ import { Post } from '../../core/domain/post';
 
 @Component({
     selector: 'home',
-    templateUrl: './home.component.html'
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements ng.OnInit {
     posts: Post[] = new Array<Post>();

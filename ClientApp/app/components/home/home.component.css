@@ -1,0 +1,10 @@
+:host {
+    display: inline-grid;
+    grid-template-areas: "links sidebar";
+    width: 100%;
+}
+
+sidebar {
+    justify-self: end;
+    margin-right: 45px;
+}
