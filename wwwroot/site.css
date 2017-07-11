@@ -1,0 +1,10 @@
+body {
+    padding-bottom: 20px;
+    margin: 0;
+    display: grid;
+    grid-template-areas:
+        "topbar"
+        "main"
+        "footer";
+    background-color: 	#F5F5F5;
+}
