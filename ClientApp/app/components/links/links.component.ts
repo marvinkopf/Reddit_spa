@@ -9,4 +9,20 @@ import { Post } from '../../core/domain/post';
 export class LinksComponent {
     @Input()
     posts: Post[];
+
+    public UserUpvoted(post: Post): boolean {
+        return false;
+    }
+
+    public UserDownvoted(post: Post): boolean {
+        return false;
+    }
+
+    public Upvote(post: Post): void {
+        console.log("call upvote");
+    }
+
+    public Downvote(post: Post): void {
+        console.log("call downvote");
+    }
 }

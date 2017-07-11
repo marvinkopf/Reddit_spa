@@ -14,6 +14,7 @@ export class HomeComponent implements ng.OnInit {
     {
         this.posts = new Array<Post>(new Post(), new Post());
         this.posts[0].title = "1";
+        this.posts[0].score = 100;
         this.posts[1].title = "2";
     }
 }

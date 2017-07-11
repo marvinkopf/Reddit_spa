@@ -1,7 +1,27 @@
 <div class='links'>
     <ul>
         <li *ngFor='let post of posts' class=''>
-            {{ post.title }}
+            <div class='post'>
+                <div class='upvote-btn'>
+                    <span
+                        [style.color]="UserUpvoted(post) ? 'orange' : ''"
+                        class='upvote'
+                        (click)="Upvote(post)">
+                    </span>
+                    <div
+                        [style.color]=
+                            "UserUpvoted(post) ? 'orange' : UserDownvoted(post) ? 'blue' : ''"
+                        class='vote-score'>
+                        {{ post.score }}
+                    </div>
+                    <span
+                        [style.color]="UserDownvoted(post) ? 'blue' : ''"
+                        class='downvote'
+                        (click)="Downvote(post)">
+                    </span>
+                </div>
+                {{ post.title }}
+            </div>
         </li>
     </ul>
 </div>

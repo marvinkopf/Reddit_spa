@@ -8,3 +8,15 @@
     background-color: white;
     
 }
+
+.upvote::after {
+    content: "▲";
+}
+
+.downvote::after {
+    content: "▼";
+}
+
+.upvote-btn {
+    color: slategray;
+}
