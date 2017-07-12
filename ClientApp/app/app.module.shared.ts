@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Title }  from '@angular/platform-browser';
 
 import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -64,6 +65,7 @@ export const sharedConfig: NgModule = {
         AuthenticationService,
         UserService,
         PostService,
+        Title,
         Modal,
         Overlay,
         { provide: OverlayRenderer, useClass: DOMOverlayRenderer }]
