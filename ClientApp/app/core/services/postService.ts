@@ -22,6 +22,7 @@ export class PostService {
 
         for (let i = 0; i < 30; i++) {
             posts[i] = new Post();
+            posts[i].postId = i;
             posts[i].score = i * 100;
             posts[i].creator = new ApplicationUser();
             posts[i].creator.userName = "Gustav";

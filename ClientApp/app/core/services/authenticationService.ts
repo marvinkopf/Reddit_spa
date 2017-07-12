@@ -29,6 +29,7 @@ export class AuthenticationService {
             this.user = new ApplicationUser();
             this.user.userName = "Olaf";
             this.user.upvotedPosts = new Array<number>();
+            this.user.downvotedPosts = new Array<number>();
         }
 
         if (this.IsLoggedIn())
