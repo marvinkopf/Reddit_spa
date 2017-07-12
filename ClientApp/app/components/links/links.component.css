@@ -69,3 +69,11 @@ ul li {
 .sub a, .sub-2 a {
     margin-right: 5px;
 }
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

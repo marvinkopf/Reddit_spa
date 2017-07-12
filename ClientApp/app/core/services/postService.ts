@@ -30,6 +30,7 @@ export class PostService {
             posts[i].subreddit.name = "news";
             posts[i].created = Date.now();
             posts[i].title = i.toFixed();
+            posts[i].uri = "www.google.de";
         }
 
         return Observable.create(observer => {
