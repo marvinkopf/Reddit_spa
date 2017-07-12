@@ -10,6 +10,7 @@ import { LoginModalComponent } from './components/loginModal/loginModal.componen
 import { NotFoundComponent } from './components/NotFound/notfound.component';
 import { SubredditComponent } from './components/subreddit/subreddit.component';
 import { UserPageComponent } from './components/userpage/userpage.component';
+import { SubmitComponent } from './components/submit/submit.component';
 import { PostComponent } from './components/post/post.component';
 
 import { AuthenticationService } from './core/services/authenticationService';
@@ -42,6 +43,7 @@ export const sharedConfig: NgModule = {
         SubredditComponent,
         SidebarComponent,
         UserPageComponent,
+        SubmitComponent,
         PostComponent
     ],
     imports: [
@@ -51,6 +53,7 @@ export const sharedConfig: NgModule = {
             { path: 'r/:name/comments/:postId', component: PostComponent},
             { path: 'u/:name', redirectTo: 'user/:name'},
             { path: 'user/:name', component: UserPageComponent },
+            { path:'submit', component: SubmitComponent },
             { path: '**', component: NotFoundComponent }
         ])
     ],

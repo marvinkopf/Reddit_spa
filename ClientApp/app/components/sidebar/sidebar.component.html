@@ -1,7 +1,7 @@
 <div class='sidebar'>
     <ul class='sidebar-links'>
         <li>
-            <a *ngIf='UserLoggedIn()' href='' class=''>Submit Link</a>
+            <a *ngIf='UserLoggedIn()' [routerLink]="['/submit']" class=''>Submit Link</a>
             <a *ngIf='!UserLoggedIn()' href='javascript:void(0)'
                 (click)='login()' class=''>Submit Link</a>
         </li>
