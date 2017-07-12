@@ -5,9 +5,9 @@ import { HttpModule } from '@angular/http';
 import { sharedConfig } from './app.module.shared';
 
 import { ModalModule } from 'angular2-modal';
-import { VexModalModule } from 'angular2-modal/plugins/vex';
 
 import { LoginModalComponent } from './components/loginModal/loginModal.component';
+import { VexModalModule } from 'angular2-modal/plugins/vex';
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
@@ -20,9 +20,10 @@ import { LoginModalComponent } from './components/loginModal/loginModal.componen
         ...sharedConfig.imports
     ],
     providers: [
-        { provide: 'ORIGIN_URL', useValue: location.origin }
+        { provide: 'ORIGIN_URL', useValue: location.origin },
+        sharedConfig.providers
     ],
-    entryComponents: [ LoginModalComponent ]
+    entryComponents: [LoginModalComponent]
 })
 export class AppModule {
 }
