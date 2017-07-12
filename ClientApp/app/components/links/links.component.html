@@ -31,7 +31,7 @@
                     <div class='sub'>
                         submitted {{TimePassed(post.created)}} ago by
                         <template [ngIf]='post.creator != null'>
-                            <a class='creator' href=''>{{post.creator.userName}}</a>
+                            <a class='creator' [routerLink]="['/user', post.creator.userName]">{{post.creator.userName}}</a>
                         </template>
                         <template [ngIf]='post.creator == null'>
                             [deleted]

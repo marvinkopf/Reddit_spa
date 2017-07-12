@@ -9,8 +9,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginModalComponent } from './components/loginModal/loginModal.component';
 import { NotFoundComponent } from './components/NotFound/notfound.component';
 import { SubredditComponent } from './components/subreddit/subreddit.component';
+import { UserPageComponent } from './components/userpage/userpage.component';
 
 import { AuthenticationService } from './core/services/authenticationService';
+import { UserService } from './core/services/userService';
 
 import { Overlay, OverlayRenderer, DOMOverlayRenderer } from "angular2-modal";
 import { overlayConfigFactory } from "angular2-modal";
@@ -36,16 +38,21 @@ export const sharedConfig: NgModule = {
         LoginModalComponent,
         NotFoundComponent,
         SubredditComponent,
-        SidebarComponent
+        SidebarComponent,
+        UserPageComponent
     ],
     imports: [
         RouterModule.forRoot([
             { path: '', component: HomeComponent },
             { path: 'r/:name', component: SubredditComponent },
+            { path: 'u/:name', redirectTo: 'user/:name'},
+            { path: 'user/:name', component: UserPageComponent },
             { path: '**', component: NotFoundComponent }
         ])
     ],
-    providers: [AuthenticationService,
+    providers: [
+        AuthenticationService,
+        UserService,
         Modal,
         Overlay,
         { provide: OverlayRenderer, useClass: DOMOverlayRenderer }]
