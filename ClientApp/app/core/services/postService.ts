@@ -4,6 +4,8 @@ import { Observable } from "rxjs/Observable";
 import { Post } from "../domain/post";
 import "rxjs/Rx";
 
+import { ApplicationUser } from "../domain/applicationUser";
+
 @Injectable()
 export class PostService {
 
@@ -20,6 +22,8 @@ export class PostService {
         for (let i = 0; i < 30; i++) {
             posts[i] = new Post();
             posts[i].score = i * 100;
+            posts[i].creator = new ApplicationUser();
+            posts[i].creator.userName = "Gustav";
             posts[i].title = i.toFixed();
         }
 

@@ -31,7 +31,7 @@
                     <div class='sub'>
                         submitted xx ago by
                         <template [ngIf]='post.creator != null'>
-                            <a class='creator' href=''></a>
+                            <a class='creator' href=''>{{ post.creator.userName }}</a>
                         </template>
                         <template [ngIf]='post.creator == null'>
                             [deleted]
