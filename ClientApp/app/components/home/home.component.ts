@@ -1,20 +1,20 @@
 import * as ng from "@angular/core";
-import {Component, Input, Output, EventEmitter} from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Post } from '../../core/domain/post';
+import { PostService } from '../../core/services/postService';
 
 @Component({
     selector: 'home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+    styleUrls: ['./home.component.css'],
+    providers: [PostService]
 })
 export class HomeComponent implements ng.OnInit {
     posts: Post[] = new Array<Post>();
 
+    constructor(private postService: PostService) { }
+
     ngOnInit() {
-        this.posts = new Array<Post>(new Post(), new Post());
-        this.posts[0].title = "1";
-        this.posts[0].score = 100;
-        this.posts[1].score = 100;
-        this.posts[1].title = "2";
+        this.postService.getPosts().subscribe(posts => this.posts = posts);
     }
 }
