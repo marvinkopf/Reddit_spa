@@ -1,4 +1,5 @@
 import { ApplicationUser } from './applicationUser';
+import { Subreddit } from "./subreddit";
 
 export class Post {
     postId: number;
@@ -7,6 +8,6 @@ export class Post {
     title: string;
     uri: string;
     uriToImage: string;
-    subreddit;
+    subreddit: Subreddit;
     score: number;
 }

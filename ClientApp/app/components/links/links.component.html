@@ -27,16 +27,16 @@
                     </a>
                 </div>
                 <div class='content'>
-                    <a class='post-title' href='{{ post.uri }}'>{{ post.title }}</a><br>
+                    <a class='post-title' href='{{ post.uri }}'>{{post.title}}</a><br>
                     <div class='sub'>
                         submitted xx ago by
                         <template [ngIf]='post.creator != null'>
-                            <a class='creator' href=''>{{ post.creator.userName }}</a>
+                            <a class='creator' href=''>{{post.creator.userName}}</a>
                         </template>
                         <template [ngIf]='post.creator == null'>
                             [deleted]
                         </template>
-                        in <a class='creator' href=''>r/</a>
+                        in <a class='creator' href=''>r/{{post.subreddit.name}}</a>
                     </div>
                     <div class='sub-2'>
                         <a href='/post/{{post.postId}}'> comments</a>

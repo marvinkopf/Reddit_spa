@@ -5,6 +5,7 @@ import { Post } from "../domain/post";
 import "rxjs/Rx";
 
 import { ApplicationUser } from "../domain/applicationUser";
+import { Subreddit } from "../domain/subreddit";
 
 @Injectable()
 export class PostService {
@@ -24,6 +25,8 @@ export class PostService {
             posts[i].score = i * 100;
             posts[i].creator = new ApplicationUser();
             posts[i].creator.userName = "Gustav";
+            posts[i].subreddit = new Subreddit();
+            posts[i].subreddit.name = "news";
             posts[i].title = i.toFixed();
         }
 
