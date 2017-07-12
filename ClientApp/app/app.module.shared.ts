@@ -12,6 +12,7 @@ import { SubredditComponent } from './components/subreddit/subreddit.component';
 import { UserPageComponent } from './components/userpage/userpage.component';
 import { SubmitComponent } from './components/submit/submit.component';
 import { PostComponent } from './components/post/post.component';
+import { CreateSubComponent } from './components/createsub/createsub.component';
 
 import { AuthenticationService } from './core/services/authenticationService';
 import { UserService } from './core/services/userService';
@@ -44,7 +45,8 @@ export const sharedConfig: NgModule = {
         SidebarComponent,
         UserPageComponent,
         SubmitComponent,
-        PostComponent
+        PostComponent,
+        CreateSubComponent
     ],
     imports: [
         RouterModule.forRoot([
@@ -54,6 +56,7 @@ export const sharedConfig: NgModule = {
             { path: 'u/:name', redirectTo: 'user/:name'},
             { path: 'user/:name', component: UserPageComponent },
             { path:'submit', component: SubmitComponent },
+            { path:'subreddits/create', component: CreateSubComponent },
             { path: '**', component: NotFoundComponent }
         ])
     ],

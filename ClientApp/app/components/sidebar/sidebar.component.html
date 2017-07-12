@@ -6,7 +6,7 @@
                 (click)='login()' class=''>Submit Link</a>
         </li>
         <li>
-            <a *ngIf='UserLoggedIn()' href='' class=''>Create Subreddit</a>
+            <a *ngIf='UserLoggedIn()' [routerLink]="['/subreddits/create']" class=''>Create Subreddit</a>
             <a *ngIf='!UserLoggedIn()' href='javascript:void(0)'
                 (click)='login()' class=''>Create Subreddit</a>
         </li>
