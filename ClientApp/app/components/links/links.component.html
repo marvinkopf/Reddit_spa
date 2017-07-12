@@ -29,7 +29,7 @@
                 <div class='content'>
                     <a class='post-title' href='{{ post.uri }}'>{{post.title}}</a><br>
                     <div class='sub'>
-                        submitted xx ago by
+                        submitted {{TimePassed(post.created)}} ago by
                         <template [ngIf]='post.creator != null'>
                             <a class='creator' href=''>{{post.creator.userName}}</a>
                         </template>

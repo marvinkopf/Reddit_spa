@@ -25,4 +25,8 @@ export class LinksComponent {
     public Downvote(post: Post): void {
         console.log("call downvote");
     }
+
+    public TimePassed(date: number): string {
+        return "<1min ago";
+    }
 }

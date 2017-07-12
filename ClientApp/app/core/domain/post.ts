@@ -3,7 +3,7 @@ import { Subreddit } from "./subreddit";
 
 export class Post {
     postId: number;
-    created;
+    created: number;
     creator: ApplicationUser;
     title: string;
     uri: string;

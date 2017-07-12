@@ -27,6 +27,7 @@ export class PostService {
             posts[i].creator.userName = "Gustav";
             posts[i].subreddit = new Subreddit();
             posts[i].subreddit.name = "news";
+            posts[i].created = Date.now();
             posts[i].title = i.toFixed();
         }
 
