@@ -76,6 +76,6 @@ export class LinksComponent {
     }
 
     public TimePassed(date: number): string {
-        return "<1min ago";
+        return "<1min";
     }
 }
