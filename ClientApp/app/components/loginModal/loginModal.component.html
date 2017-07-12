@@ -1,0 +1,16 @@
+<div class='host'>
+    <div class='register'>
+        <h4 class='title'>CREATE A NEW ACCOUNT</h4>
+        <input class='' type='text' [(ngModel)]='register_username' placeholder='choose a username'><br>
+        <input class='' type='text' [(ngModel)]='register_password' placeholder='password'><br>
+        <input class='' type='text' [(ngModel)]='register_verifyPassword' placeholder='verify password'><br>
+        <input class='' type='text' [(ngModel)]='register_email' placeholder='email'><br>
+        <button (click)='register()' type='button' class=''>REGISTER</button>
+    </div>
+    <div class='login'>
+        <h4 class='title'>LOG IN</h4>
+        <input type='text' [(ngModel)]='login_username'placeholder='username'><br>
+        <input type='text' [(ngModel)]='login_password' placeholder='password'><br>
+        <button (click)='login()' type='button' class=''>LOG IN</button>
+    </div>
+</div>

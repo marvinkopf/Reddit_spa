@@ -5,14 +5,9 @@
         </div>
         <div class=''>
             <div id='menu' class=''>
-                <div [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/home']">
-                        Register
-                    </a>
-                </div>
-                <div [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/home']">
-                        Log In
+                <div>
+                    <a (click)='login()'>
+                        Login or register
                     </a>
                 </div>
             </div>
