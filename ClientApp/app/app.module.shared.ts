@@ -8,6 +8,7 @@ import { LinksComponent } from './components/links/links.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginModalComponent } from './components/loginModal/loginModal.component';
 import { NotFoundComponent } from './components/NotFound/notfound.component';
+import { SubredditComponent } from './components/subreddit/subreddit.component';
 
 export const sharedConfig: NgModule = {
     bootstrap: [ AppComponent ],
@@ -18,11 +19,13 @@ export const sharedConfig: NgModule = {
         HomeComponent,
         LoginModalComponent,
         NotFoundComponent,
+        SubredditComponent,
         SidebarComponent
     ],
     imports: [
         RouterModule.forRoot([
             { path: '', component: HomeComponent },
+            { path: 'r/:name', component: SubredditComponent },
             { path: '**', component: NotFoundComponent }
         ])
     ]
