@@ -15,6 +15,8 @@ import {
 import { FormsModule } from '@angular/forms';
 
 import { LoginModalComponent } from '../loginModal/loginModal.component';
+import { AuthenticationService } from '../../core/services/authenticationService';
+
 
 @Component({
     selector: 'nav-menu',
@@ -26,7 +28,12 @@ export class NavMenuComponent {
     theme: VEXBuiltInThemes = <VEXBuiltInThemes>'default';
     @ViewChild('templateRef') public templateRef: TemplateRef<any>;
 
-    constructor(public modal: Modal) {
+    constructor(public modal: Modal,
+        private authenticationService: AuthenticationService) {
+    }
+
+    UserLoggedIn(): boolean {
+        return this.authenticationService.IsLoggedIn();
     }
 
     login(): void {
@@ -35,5 +42,9 @@ export class NavMenuComponent {
             .isBlocking(false)
             .content(LoginModalComponent)
             .open();
+    }
+
+    logoff(): void {
+        this.authenticationService.Logout();
     }
 }

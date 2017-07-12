@@ -5,9 +5,14 @@
         </div>
         <div class=''>
             <div id='menu' class=''>
-                <div>
+                <div *ngIf='!UserLoggedIn()'>
                     <a (click)='login()'>
-                        Login or register
+                        Log in or register
+                    </a>
+                </div>
+                <div *ngIf='UserLoggedIn()'>
+                    <a (click)='logoff()'>
+                        Log off
                     </a>
                 </div>
             </div>
