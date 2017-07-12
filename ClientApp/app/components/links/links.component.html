@@ -39,7 +39,7 @@
                         in <a class='creator' [routerLink]="['/r', post.subreddit.name]">r/{{post.subreddit.name}}</a>
                     </div>
                     <div class='sub-2'>
-                        <a href='/post/{{post.postId}}'> comments</a>
+                        <a [routerLink]="['/r', post.subreddit.name, 'comments', post.postId]"> comments</a>
                     </div>
                 </div>
             </div>
