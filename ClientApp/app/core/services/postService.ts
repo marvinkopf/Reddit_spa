@@ -51,9 +51,21 @@ export class PostService {
             observer.complete();
         });}
 
-    public removeProject(post: Post) {
+    public removePost(post: Post) {
         return null;
     }
+
+    public Upvote(post: Post) {
+
+    }
+
+    public Downvote(post: Post) {
+
+    }
+
+    public ClearVote(post: Post) {
+
+    } 
 
     private handleError(error: any) {
         let errMsg = (error.message) ? error.message :

@@ -11,6 +11,9 @@
                     </a>
                 </div>
                 <div *ngIf='UserLoggedIn()'>
+                    <a>
+                        {{getUserName()}}
+                    </a>
                     <a (click)='logoff()'>
                         Log off
                     </a>

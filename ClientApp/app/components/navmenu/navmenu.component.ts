@@ -47,4 +47,8 @@ export class NavMenuComponent {
     logoff(): void {
         this.authenticationService.Logout();
     }
+
+    getUserName(): string {
+        return this.authenticationService.getUser().userName;
+    }
 }
