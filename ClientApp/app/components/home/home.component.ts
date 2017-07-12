@@ -10,11 +10,11 @@ import { Post } from '../../core/domain/post';
 export class HomeComponent implements ng.OnInit {
     posts: Post[] = new Array<Post>();
 
-    ngOnInit()
-    {
+    ngOnInit() {
         this.posts = new Array<Post>(new Post(), new Post());
         this.posts[0].title = "1";
         this.posts[0].score = 100;
+        this.posts[1].score = 100;
         this.posts[1].title = "2";
     }
 }

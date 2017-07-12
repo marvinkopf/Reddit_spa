@@ -18,5 +18,54 @@
 }
 
 .upvote-btn {
+    margin-left: 10px;
+    text-align: center;
     color: slategray;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    margin: 0;
+    display: flex;
+}
+
+.post {
+    display: flex;
+}
+
+.post .content {
+    margin-left: 10px;
+}
+
+.post .content .sub .creator {
+    color: #369;
+}
+
+.post .content .sub-2,
+.post .content .sub-2 a {
+    color: slategray;
+    font-weight: bold;
+    font-size: small;
+}
+
+.post .content .sub,
+.post .content .sub a {
+    color: slategray;
+    font-size: small;
+}
+
+.count {
+    padding-top: 16px;
+    width: 16px;
+    text-align: right;
+    color: slategray;
+}
+
+.sub a, .sub-2 a {
+    margin-right: 5px;
 }
