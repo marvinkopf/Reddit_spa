@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Post } from '../../core/domain/post';
 import { AuthenticationService } from '../../core/services/authenticationService';
+import { ModalService } from '../../core/services/modalService';
 
 @Component({
     selector: 'links',
@@ -11,7 +12,12 @@ export class LinksComponent {
     @Input()
     posts: Post[];
 
-    constructor(private authenticationService: AuthenticationService) { }
+    constructor(private authenticationService: AuthenticationService,
+        private modalService: ModalService) { }
+
+    public login(): void {
+        this.modalService.ShowLoginModal();
+    }
 
     public UserUpvoted(post: Post): boolean {
         if (!this.authenticationService.IsLoggedIn())
@@ -38,6 +44,11 @@ export class LinksComponent {
     }
 
     public Upvote(post: Post): void {
+        if (!this.authenticationService.IsLoggedIn()) {
+            this.modalService.ShowLoginModal();
+            return;
+        }
+
         for (let i = 0; i < this.authenticationService.getUser().upvotedPosts.length; i++) {
             if (this.authenticationService.getUser().upvotedPosts[i] == post.postId) {
                 // User wants to clear vote
@@ -57,6 +68,11 @@ export class LinksComponent {
     }
 
     public Downvote(post: Post): void {
+        if (!this.authenticationService.IsLoggedIn()) {
+            this.modalService.ShowLoginModal();
+            return;
+        }
+
         for (let i = 0; i < this.authenticationService.getUser().downvotedPosts.length; i++) {
             if (this.authenticationService.getUser().downvotedPosts[i] == post.postId) {
                 // User wants to clear vote
