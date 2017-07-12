@@ -1,0 +1,13 @@
+h1 {
+    text-align: center;
+    font-size: 100px;
+    margin-top: 200px;
+    margin-bottom: 0;
+    color: gray;
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    color: lightgray;
+}
