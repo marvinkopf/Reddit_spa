@@ -24,8 +24,8 @@ export class UserPageComponent implements OnInit, OnDestroy {
         this.sub = this.route.params.subscribe(params => {
             let name = (params['name']);
             let user = this.userService.GetUser(name);
-            if (user != null)
-                this.userExists = true;
+            if (user == null)
+                this.router.navigateByUrl('./NotFound', { skipLocationChange : true });
         });
     }
 
