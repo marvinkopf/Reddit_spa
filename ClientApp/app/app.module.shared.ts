@@ -14,6 +14,7 @@ import { UserPageComponent } from './components/userpage/userpage.component';
 import { SubmitComponent } from './components/submit/submit.component';
 import { PostComponent } from './components/post/post.component';
 import { CreateSubComponent } from './components/createsub/createsub.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 import { AuthenticationService } from './core/services/authenticationService';
 import { UserService } from './core/services/userService';
@@ -45,6 +46,7 @@ export const sharedConfig: NgModule = {
         NotFoundComponent,
         SubredditComponent,
         SidebarComponent,
+        CommentComponent,
         UserPageComponent,
         SubmitComponent,
         PostComponent,

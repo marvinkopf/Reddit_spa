@@ -72,8 +72,9 @@ a:hover {
     text-decoration: underline;
 }
 
-textarea.comment-input {
-    height: 80px;
+.comment-input,
+.comment-input textarea {
+    min-height: 80px;
     width: 300px;
 }
 

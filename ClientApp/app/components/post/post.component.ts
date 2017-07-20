@@ -2,8 +2,10 @@ import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from "@angu
 import { ModalService } from "../../core/services/modalService";
 import { AuthenticationService } from "../../core/services/authenticationService";
 import { Post } from "../../core/domain/post";
+import { Comment } from "../../core/domain/comment";
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../../core/services/postService';
+import { CommentService } from '../../core/services/commentService';
 
 @Component({
     selector: 'post',
@@ -12,12 +14,14 @@ import { PostService } from '../../core/services/postService';
 })
 export class PostComponent implements OnInit, OnDestroy {
     post: Post;
+    comments: Comment[];
     sub: any;
 
     constructor(private modalService: ModalService,
         private authenticationService: AuthenticationService,
         private route: ActivatedRoute,
-        private postService: PostService) { }
+        private postService: PostService,
+        private commentService: CommentService) { }
 
     public login(): void {
         this.modalService.ShowLoginModal();
@@ -103,10 +107,23 @@ export class PostComponent implements OnInit, OnDestroy {
         return "<1min";
     }
 
+    public GetParentComments(): Comment[] {
+        let comments = new Array<Comment>();
+
+        for(let i = 0; i < this.comments.length; i++)
+            if (this.comments[i].parentId == undefined)
+                comments.push(this.comments[i]);
+            
+        return comments;
+    }
+
     ngOnInit() {
-        this.sub = this.route.params.subscribe(params =>
+        this.sub = this.route.params.subscribe(params => {
             this.postService.getPost(params['postId']).subscribe(post =>
-                this.post = post));
+                this.post = post);
+            this.commentService.getComments(params['postId']).subscribe(comments =>
+                this.comments = comments);
+        });
     }
 
     ngOnDestroy() {

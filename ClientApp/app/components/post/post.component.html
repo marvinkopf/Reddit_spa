@@ -32,13 +32,13 @@
     </div>
 
     <div *ngIf='UserLoggedIn()' style="margin-left:10px">
-        <textarea class="comment-input" id="Txt" name="Txt" value=""></textarea>
-        <input type="hidden" id="postId" name="postId" value="@Model.PostId" /><br>
+        <textarea class="comment-input" id="Txt" name="Txt" value=""></textarea><br>
         <input type="submit" class="button">
     </div>
 
     <ul style="margin-left:10px;">
-        <li style="display: block">
+        <li *ngFor='let comment of GetParentComments()' style="display: block">
+            <comment [comment]='comment' [comments]='comments' [backgroundColor]="'white'"></comment>
         </li>
     </ul>
 </div>

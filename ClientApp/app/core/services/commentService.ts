@@ -27,6 +27,7 @@ export class CommentService {
             comment.creator = new ApplicationUser();
             comment.creator.userName = "Gustav";
             comment.created = Date.now();
+            comment.score = i * 11;
 
             if (i > 0 && i % 2 == 0)
             {
