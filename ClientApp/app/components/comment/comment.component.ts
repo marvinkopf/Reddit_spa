@@ -19,9 +19,15 @@ export class CommentComponent {
 
     showReply: boolean = false;
     replyText: string;
+    showHideChildCommentsText: string = "hide child comments";
+    showChildComments: boolean = true;
 
     constructor(private modalService: ModalService,
         private authenticationService: AuthenticationService) { }
+
+    public ShowHideChildComments(): void {
+        this.showChildComments = !this.showChildComments;
+    }
 
     public Reply(): void {
         let comment = new Comment();

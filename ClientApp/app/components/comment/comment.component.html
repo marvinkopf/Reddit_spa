@@ -16,6 +16,9 @@
             </div>
             <div class='sub'>
                 <a href='javascript:void(0);' (click)='ShowReply()'>reply</a>
+                <a href='javascript:void(0);' (click)='ShowHideChildComments()' *ngIf='comment.children.length > 0'>
+                    {{showChildComments ? "hide child comments" : "show " + comment.children.length + " child comments"}}
+                </a>
             </div>
         </div>
 
@@ -25,7 +28,7 @@
             <button (click)='CancelReply()'>Cancel</button>
         </div>
 
-        <ul>
+        <ul *ngIf='comment.children.length > 0 && showChildComments'>
             <li *ngFor='let comment of comment.children'>
                 <comment [comment]='comment' [backgroundColor]="backgroundColor === 'white' ? 'rgb(247, 247, 248)' : 'white'"></comment>
             </li>
