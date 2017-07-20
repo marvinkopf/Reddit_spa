@@ -26,8 +26,8 @@
         </div>
 
         <ul>
-            <li *ngFor='let comment of GetChildComments()'>
-                <comment [comment]='comment' [comments]='comments' [backgroundColor]="backgroundColor === 'white' ? 'rgb(247, 247, 248)' : 'white'"></comment>
+            <li *ngFor='let comment of comment.children'>
+                <comment [comment]='comment' [backgroundColor]="backgroundColor === 'white' ? 'rgb(247, 247, 248)' : 'white'"></comment>
             </li>
         </ul>
     </div>

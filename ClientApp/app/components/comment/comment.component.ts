@@ -15,9 +15,6 @@ export class CommentComponent {
     comment: Comment;
 
     @Input()
-    comments: Comment[];
-
-    @Input()
     backgroundColor: string;
 
     showReply: boolean = false;
@@ -26,19 +23,8 @@ export class CommentComponent {
     constructor(private modalService: ModalService,
         private authenticationService: AuthenticationService) { }
 
-    public GetChildComments(): Comment[] {
-        let comments = new Array<Comment>();
-
-        for (let i = 0; i < this.comments.length; i++)
-            if (this.comments[i].parentId == this.comment.commentId)
-                comments.push(this.comments[i]);
-
-        return comments;
-    }
-
     public Reply(): void {
         let comment = new Comment();
-        comment.commentId = this.comments[this.comments.length - 1].commentId + 1;
         comment.postId = this.comment.postId;
         comment.text = this.replyText;
         comment.creator = new ApplicationUser();
@@ -46,8 +32,10 @@ export class CommentComponent {
         comment.created = Date.now();
         comment.score = 1;
         comment.parentId = this.comment.commentId;
+        comment.parent = this.comment;
+        comment.children = new Array<Comment>();
+        this.comment.children.push(comment);
 
-        this.comments.push(comment);
         this.showReply = false;
         this.replyText = '';
     }

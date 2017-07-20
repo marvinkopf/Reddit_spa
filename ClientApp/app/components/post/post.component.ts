@@ -110,10 +110,10 @@ export class PostComponent implements OnInit, OnDestroy {
     public GetParentComments(): Comment[] {
         let comments = new Array<Comment>();
 
-        for(let i = 0; i < this.comments.length; i++)
+        for (let i = 0; i < this.comments.length; i++)
             if (this.comments[i].parentId == undefined)
                 comments.push(this.comments[i]);
-            
+
         return comments;
     }
 
@@ -121,8 +121,19 @@ export class PostComponent implements OnInit, OnDestroy {
         this.sub = this.route.params.subscribe(params => {
             this.postService.getPost(params['postId']).subscribe(post =>
                 this.post = post);
-            this.commentService.getComments(params['postId']).subscribe(comments =>
-                this.comments = comments);
+            this.commentService.getComments(params['postId']).subscribe(comments => {
+                this.comments = comments;
+
+                for (let i = 0; i < this.comments.length; i++)
+                {
+                    this.comments[i].children = new Array<Comment>();
+                    for (let j = 0; j < this.comments.length; j++)
+                        if (this.comments[i].commentId == this.comments[j].parentId) {
+                            this.comments[i].children.push(this.comments[j]);
+                            this.comments[j].parent = this.comments[i];
+                        }
+                }
+            })
         });
     }
 

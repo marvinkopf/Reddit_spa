@@ -7,5 +7,7 @@ export class Comment {
     score: number;
     created: number;
     parentId?: number;
+    parent: Comment;
+    children: Comment[];
     postId: number;
 }
