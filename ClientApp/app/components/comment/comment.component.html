@@ -1,5 +1,5 @@
 <div class='comment' [ngStyle]="{ 'background-color' : backgroundColor }">
-    <div class='upvote-btn comment-upvote-btn'>
+    <div class='upvote-btn comment-upvote-btn' [style.visibility]="isCollapsed ? 'hidden' : 'inherited'">
         <span [style.color]="UserUpvoted(post) ? 'orange' : ''" class='upvote' (click)='Upvote(post)'>
                     </span><br>
         <span [style.color]="UserDownvoted(post) ? 'blue' : ''" class='downvote' (click)='Downvote(post)'>
@@ -8,13 +8,15 @@
     <div class='content' style="margin-top:5px;margin-left:-5px;margin-bottom:5px;">
         <div>
             <div>
-                <a href='javascript:void(0);' style="font-size:small">[-]</a>
+                <a href='javascript:void(0);' (click)='Collapse()' style="font-size:small">
+                    {{isCollapsed ? '[+]' : '[-]'}}
+                </a>
                 <a class='author'>{{comment.creator.userName}}</a>
                 <span class='score'>{{comment.score}} points</span>
                 <span class='date'> <1min ago</span><br>
-                <span class='text'>{{comment.text}}</span>
+                <span class='text' *ngIf='!isCollapsed'>{{comment.text}}</span>
             </div>
-            <div class='sub'>
+            <div class='sub' *ngIf='!isCollapsed'>
                 <a href='javascript:void(0);' (click)='ShowReply()'>reply</a>
                 <a href='javascript:void(0);' (click)='ShowHideChildComments()' *ngIf='comment.children.length > 0'>
                     {{showChildComments ? "hide child comments" : "show " + comment.children.length + " child comments"}}
@@ -28,7 +30,7 @@
             <button (click)='CancelReply()'>Cancel</button>
         </div>
 
-        <ul *ngIf='comment.children.length > 0 && showChildComments'>
+        <ul *ngIf='!isCollapsed && showChildComments'>
             <li *ngFor='let comment of comment.children'>
                 <comment [comment]='comment' [backgroundColor]="backgroundColor === 'white' ? 'rgb(247, 247, 248)' : 'white'"></comment>
             </li>

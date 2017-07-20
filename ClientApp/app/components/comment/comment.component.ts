@@ -21,12 +21,17 @@ export class CommentComponent {
     replyText: string;
     showHideChildCommentsText: string = "hide child comments";
     showChildComments: boolean = true;
+    isCollapsed: boolean = false;
 
     constructor(private modalService: ModalService,
         private authenticationService: AuthenticationService) { }
 
     public ShowHideChildComments(): void {
         this.showChildComments = !this.showChildComments;
+    }
+
+    public Collapse(): void {
+        this.isCollapsed = !this.isCollapsed;
     }
 
     public Reply(): void {
