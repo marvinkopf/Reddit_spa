@@ -73,3 +73,15 @@ ul li {
     margin: 0;
     display: flex;
 }
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.expander:hover {
+    text-decoration: none;
+}
