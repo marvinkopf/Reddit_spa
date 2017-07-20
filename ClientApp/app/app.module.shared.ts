@@ -18,6 +18,7 @@ import { CreateSubComponent } from './components/createsub/createsub.component';
 import { AuthenticationService } from './core/services/authenticationService';
 import { UserService } from './core/services/userService';
 import { PostService } from './core/services/postService';
+import { CommentService } from './core/services/commentService';
 
 import { Overlay, OverlayRenderer, DOMOverlayRenderer } from "angular2-modal";
 import { overlayConfigFactory } from "angular2-modal";
@@ -65,6 +66,7 @@ export const sharedConfig: NgModule = {
         AuthenticationService,
         UserService,
         PostService,
+        CommentService,
         Title,
         Modal,
         Overlay,
