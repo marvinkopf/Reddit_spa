@@ -44,8 +44,15 @@ export class PostService {
 
         for (let i = 0; i < 30; i++) {
             posts[i] = new Post();
+            posts[i].postId = i;
             posts[i].score = i * 100;
+            posts[i].creator = new ApplicationUser();
+            posts[i].creator.userName = "Gustav";
+            posts[i].subreddit = new Subreddit();
+            posts[i].subreddit.name = "news";
+            posts[i].created = Date.now();
             posts[i].title = i.toFixed();
+            posts[i].uri = "www.google.de";
         }
 
         return Observable.create(observer => {
