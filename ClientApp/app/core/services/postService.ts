@@ -16,6 +16,10 @@ export class PostService {
         return null;
     }
 
+    public GetNumberOfComments(post: Post): number {
+        return 30;
+    }
+
     public getPosts(): Observable<Post[]>;
     public getPosts(subreddit?: string): Observable<Post[]> {
         let posts = new Array<Post>(30);

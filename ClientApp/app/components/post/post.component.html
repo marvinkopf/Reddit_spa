@@ -26,7 +26,7 @@
                 </template>
             </div>
             <div class='sub-2'>
-                <a [routerLink]="['/r', post.subreddit.name, 'comments', post.postId]"> comments</a>
+                <a [routerLink]="['/r', post.subreddit.name, 'comments', post.postId]">{{GetNumberOfComments()}} comments</a>
             </div>
         </div>
     </div>

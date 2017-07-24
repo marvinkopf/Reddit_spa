@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Post } from '../../core/domain/post';
 import { AuthenticationService } from '../../core/services/authenticationService';
 import { ModalService } from '../../core/services/modalService';
+import { PostService } from '../../core/services/postService';
 
 @Component({
     selector: 'links',
@@ -13,7 +14,8 @@ export class LinksComponent {
     posts: Post[];
 
     constructor(private authenticationService: AuthenticationService,
-        private modalService: ModalService) { }
+        private modalService: ModalService,
+        private postService: PostService) { }
 
     public login(): void {
         this.modalService.ShowLoginModal();
@@ -65,6 +67,10 @@ export class LinksComponent {
         }
 
         this.authenticationService.getUser().upvotedPosts.push(post.postId);
+    }
+
+    public GetNumberOfComments(post: Post): number {
+        return this.postService.GetNumberOfComments(post);
     }
 
     public Downvote(post: Post): void {
