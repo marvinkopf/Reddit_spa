@@ -16,12 +16,18 @@ export class AuthenticationService {
         return this.isLoggedIn;
     }
 
-    public Login(username: string, password: string): boolean {
-        return this.isLoggedIn = true;
+    public Login(username: string, password: string): Observable<void> {
+        this.isLoggedIn = true;
+        return Observable.empty<void>();
     }
 
-    public Logout(): void {
+    public Logout(): Observable<void> {
         this.isLoggedIn = false;
+        return Observable.empty<void>();
+    }
+
+    public Register(username: string, password: string, email: string): Observable<void> {
+        return Observable.throw("Server cannot be reached.");
     }
 
     public getUser(): ApplicationUser {

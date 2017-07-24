@@ -32,18 +32,30 @@ export class LoginModalComponent implements ModalComponent<DialogPreset> {
     login_username: string;
     login_password: string;
 
+    registerErrorMessage: string;
+    loginErrorMessage: string;
+
     constructor(public dialog: DialogRef<DialogPreset>,
         private authenticationService: AuthenticationService) {
         this.context = dialog.context;
     }
 
     login(): void {
-        this.authenticationService.Login(this.login_username, this.login_password);
-        this.dialog.close();
+        this.authenticationService.Login(this.login_username, this.login_password).subscribe(
+            null,
+            err => this.loginErrorMessage = err,
+            () => this.dialog.close()
+        );
     }
 
     register(): void {
-        this.authenticationService.Login(this.login_username, this.login_password);
-        this.dialog.close();
+        this.authenticationService.Register(
+            this.register_username,
+            this.register_password,
+            this.register_email).subscribe(
+            null,
+            err => this.registerErrorMessage = err,
+            () => this.dialog.close()
+            );
     }
 }
