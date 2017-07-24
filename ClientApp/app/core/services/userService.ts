@@ -9,7 +9,19 @@ import { ApplicationUser } from "../domain/applicationUser";
 export class UserService {
     constructor(private http: Http) { }
 
+    users: ApplicationUser[];
+
     public GetUser(name: string): ApplicationUser {
+        if (this.users == null) {
+            this.users = new Array<ApplicationUser>();
+            let user = new ApplicationUser();
+            user.userName = "Gustav";
+            this.users.push(user);
+        }
+
+        if (name == "Gustav")
+            return this.users[0];
+
         return null;
     }
 }

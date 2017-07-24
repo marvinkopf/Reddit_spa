@@ -1,0 +1,53 @@
+<div class="main-content">
+    <h1>{{user.userName}}</h1>
+    <ul>
+        <li *ngFor='let comment of comments' style="display: block">
+            <comment [comment]='comment' [backgroundColor]="'white'"></comment>
+        </li>
+    </ul>
+    <ul>
+        <li *ngFor='let post of posts' class=''>
+            <div class='post'>
+                <div class='upvote-btn'>
+                    <span
+                        [style.color]="UserUpvoted(post) ? 'orange' : ''"
+                        class='upvote'
+                        (click)='Upvote(post)'>
+                    </span>
+                    <div
+                        [style.color]=
+                            "UserUpvoted(post) ? 'orange' : UserDownvoted(post) ? 'blue' : ''"
+                        class='vote-score'>
+                        {{ post.score }}
+                    </div>
+                    <span
+                        [style.color]="UserDownvoted(post) ? 'blue' : ''"
+                        class='downvote'
+                        (click)='Downvote(post)'>
+                    </span>
+                </div>
+                <div class='image'>
+                    <a href='//{{post.uri}}'>
+                        <img src='https://cdn2.iconfinder.com/data/icons/network-roundline/512/link-512.png' style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
+                    </a>
+                </div>
+                <div class='content'>
+                    <a class='post-title' href='//{{post.uri}}'>{{post.title}}</a><br>
+                    <div class='sub'>
+                        submitted {{TimePassed(post.created)}} ago by
+                        <template [ngIf]='post.creator != null'>
+                            <a class='creator' [routerLink]="['/user', post.creator.userName]">{{post.creator.userName}}</a>
+                        </template>
+                        <template [ngIf]='post.creator == null'>
+                            [deleted]
+                        </template>
+                        in <a class='creator' [routerLink]="['/r', post.subreddit.name]">r/{{post.subreddit.name}}</a>
+                    </div>
+                    <div class='sub-2'>
+                        <a [routerLink]="['/r', post.subreddit.name, 'comments', post.postId]">{{GetNumberOfComments(post)}} comments</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

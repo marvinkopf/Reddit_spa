@@ -18,7 +18,7 @@
             </div>
             <div class='sub' *ngIf='!isCollapsed'>
                 <a href='javascript:void(0);' (click)='ShowReply()'>reply</a>
-                <a href='javascript:void(0);' (click)='ShowHideChildComments()' *ngIf='comment.children.length > 0'>
+                <a href='javascript:void(0);' (click)='ShowHideChildComments()' *ngIf='comment.children?.length > 0'>
                     {{showChildComments ? "hide child comments" : "show " + comment.children.length + " child comments"}}
                 </a>
             </div>

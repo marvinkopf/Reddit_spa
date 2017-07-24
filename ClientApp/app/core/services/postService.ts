@@ -43,6 +43,28 @@ export class PostService {
         });
     }
 
+    public getPostsFromUser(userId: number): Observable<Post[]> {
+        let posts = new Array<Post>(30);
+
+        for (let i = 0; i < 30; i++) {
+            posts[i] = new Post();
+            posts[i].postId = i;
+            posts[i].score = i * 100;
+            posts[i].creator = new ApplicationUser();
+            posts[i].creator.userName = "Gustav";
+            posts[i].subreddit = new Subreddit();
+            posts[i].subreddit.name = "news";
+            posts[i].created = Date.now();
+            posts[i].title = i.toFixed();
+            posts[i].uri = "www.google.de";
+        }
+
+        return Observable.create(observer => {
+            observer.next(posts);
+            observer.complete();
+        });
+    }
+
     public getPost(id: number): Observable<Post> {
         let posts = new Array<Post>(30);
 

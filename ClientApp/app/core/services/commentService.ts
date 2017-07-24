@@ -15,7 +15,7 @@ export class CommentService {
     public addComment(comment: Comment): Observable<Comment> {
         return null;
     }
-
+    
     public getComments(postId: number): Observable<Comment[]> {
         let comments = new Array<Comment>();
 
@@ -23,6 +23,32 @@ export class CommentService {
             let comment = new Comment();
             comment.commentId = i;
             comment.postId = postId;
+            comment.text = i.toString();
+            comment.creator = new ApplicationUser();
+            comment.creator.userName = "Gustav";
+            comment.created = Date.now();
+            comment.score = i * 11;
+
+            if (i > 0 && i % 2 == 0)
+            {
+                comment.parentId = i - 1;
+            }
+
+            comments.push(comment);
+        }
+
+        return Observable.create(observer => {
+            observer.next(comments);
+            observer.complete();
+        });
+    }
+
+    public GetCommentsFromUser(userId: number): Observable<Comment[]> {
+        let comments = new Array<Comment>();
+
+        for (let i = 0; i < 30; i++) {
+            let comment = new Comment();
+            comment.commentId = i;
             comment.text = i.toString();
             comment.creator = new ApplicationUser();
             comment.creator.userName = "Gustav";
