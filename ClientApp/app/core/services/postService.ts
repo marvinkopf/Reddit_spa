@@ -26,7 +26,13 @@ export class PostService {
         }
     }
 
-    public addPost(post: Post): Observable<void> {
+    public addPost(post: Post): void {
+        post.score = 0;
+        post.created = Date.now();
+        post.postId = this.posts[this.posts.length - 1].postId + 1;
+
+        this.posts.push(post);
+
         return null;
     }
 
@@ -36,23 +42,8 @@ export class PostService {
 
     public getPosts(): Observable<Post[]>;
     public getPosts(subreddit?: string): Observable<Post[]> {
-        let posts = new Array<Post>(30);
-
-        for (let i = 0; i < 30; i++) {
-            posts[i] = new Post();
-            posts[i].postId = i;
-            posts[i].score = i * 100;
-            posts[i].creator = new ApplicationUser();
-            posts[i].creator.userName = "Gustav";
-            posts[i].subreddit = new Subreddit();
-            posts[i].subreddit.name = "news";
-            posts[i].created = Date.now();
-            posts[i].title = i.toFixed();
-            posts[i].uri = "www.google.de";
-        }
-
         return Observable.create(observer => {
-            observer.next(posts);
+            observer.next(this.posts);
             observer.complete();
         });
     }
