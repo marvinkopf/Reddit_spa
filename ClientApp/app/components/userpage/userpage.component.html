@@ -1,5 +1,5 @@
 <div class="main-content">
-    <h1>{{user.userName}}</h1>
+    <h1>{{user?.userName}}</h1>
     <ul>
         <li *ngFor='let comment of comments' style="display: block">
             <comment [comment]='comment' [backgroundColor]="'white'"></comment>
