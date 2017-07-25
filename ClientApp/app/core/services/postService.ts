@@ -9,8 +9,22 @@ import { Subreddit } from "../domain/subreddit";
 
 @Injectable()
 export class PostService {
+    posts: Post[] = new Array<Post>(30);
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) {
+        for (let i = 0; i < 30; i++) {
+            this.posts[i] = new Post();
+            this.posts[i].postId = i;
+            this.posts[i].score = i * 100;
+            this.posts[i].creator = new ApplicationUser();
+            this.posts[i].creator.userName = "Gustav";
+            this.posts[i].subreddit = new Subreddit();
+            this.posts[i].subreddit.name = "news";
+            this.posts[i].created = Date.now();
+            this.posts[i].title = i.toFixed();
+            this.posts[i].uri = "www.google.de";
+        }
+    }
 
     public addPost(post: Post): Observable<void> {
         return null;
@@ -66,23 +80,8 @@ export class PostService {
     }
 
     public getPost(id: number): Observable<Post> {
-        let posts = new Array<Post>(30);
-
-        for (let i = 0; i < 30; i++) {
-            posts[i] = new Post();
-            posts[i].postId = i;
-            posts[i].score = i * 100;
-            posts[i].creator = new ApplicationUser();
-            posts[i].creator.userName = "Gustav";
-            posts[i].subreddit = new Subreddit();
-            posts[i].subreddit.name = "news";
-            posts[i].created = Date.now();
-            posts[i].title = i.toFixed();
-            posts[i].uri = "www.google.de";
-        }
-
         return Observable.create(observer => {
-            observer.next(posts[id]);
+            observer.next(this.posts[id]);
             observer.complete();
         });}
 
