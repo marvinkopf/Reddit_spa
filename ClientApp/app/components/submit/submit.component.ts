@@ -24,7 +24,7 @@ export class SubmitComponent implements OnInit {
 
     ngOnInit() {
         if (!this.authenticationService.IsLoggedIn())
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/login');
     }
 
     submit(): void {
