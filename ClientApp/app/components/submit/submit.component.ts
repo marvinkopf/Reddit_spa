@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from "@angular/core";
-import { ModalService } from "../../core/services/modalService";
 import { AuthenticationService } from "../../core/services/authenticationService";
 import { Post } from "../../core/domain/post";
 import { Subreddit } from "../../core/domain/subreddit";
@@ -17,8 +16,7 @@ export class SubmitComponent implements OnInit {
     title: string;
     subreddit: string;
 
-    constructor(private modalService: ModalService,
-        private authenticationService: AuthenticationService,
+    constructor(private authenticationService: AuthenticationService,
         private postService: PostService,
         private router: Router) { }
 
