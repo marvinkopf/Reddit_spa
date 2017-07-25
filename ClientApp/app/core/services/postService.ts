@@ -12,7 +12,7 @@ export class PostService {
 
     constructor(private http: Http) { }
 
-    public addPost(post: Post): Observable<Post> {
+    public addPost(post: Post): Observable<void> {
         return null;
     }
 
