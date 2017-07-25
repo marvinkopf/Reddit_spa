@@ -15,6 +15,7 @@ import { SubmitComponent } from './components/submit/submit.component';
 import { PostComponent } from './components/post/post.component';
 import { CreateSubComponent } from './components/createsub/createsub.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { LoginComponent } from './components/login/login.component';
 
 import { AuthenticationService } from './core/services/authenticationService';
 import { UserService } from './core/services/userService';
@@ -50,7 +51,8 @@ export const sharedConfig: NgModule = {
         UserPageComponent,
         SubmitComponent,
         PostComponent,
-        CreateSubComponent
+        CreateSubComponent,
+        LoginComponent
     ],
     imports: [
         RouterModule.forRoot([
@@ -61,6 +63,7 @@ export const sharedConfig: NgModule = {
             { path: 'user/:name', component: UserPageComponent },
             { path:'submit', component: SubmitComponent },
             { path:'subreddits/create', component: CreateSubComponent },
+            { path: 'login', component: LoginComponent },
             { path: '**', component: NotFoundComponent }
         ])
     ],
