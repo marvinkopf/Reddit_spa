@@ -1,6 +1,6 @@
 <div class='links'>
     <ul>
-        <li *ngFor='let post of posts; let i = index;' class=''>
+        <li *ngFor='let post of postsByDate(); let i = index;' class=''>
             <div class='count'>{{i+1}}</div>
             <div class='post'>
                 <div class='upvote-btn'>

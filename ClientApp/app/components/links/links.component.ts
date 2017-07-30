@@ -13,6 +13,15 @@ export class LinksComponent {
     @Input()
     posts: Post[];
 
+    postsByDate(): Post[] {
+        return this.posts.sort((p1, p2) => {
+            if (p1.created > p2.created)
+                return -1;
+
+            return 1;
+        });
+    }
+
     constructor(private authenticationService: AuthenticationService,
         private modalService: ModalService,
         private postService: PostService) { }
