@@ -23,7 +23,8 @@
                 </div>
                 <div class='image'>
                     <a href='//{{post.uri}}'>
-                        <img src='https://cdn2.iconfinder.com/data/icons/network-roundline/512/link-512.png' style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
+                        <img *ngIf='post.uri == null' src='https://cdn2.iconfinder.com/data/icons/network-roundline/512/link-512.png' style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
+                        <img *ngIf='post.uri != null' src='{{post.uriToImage}}' style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
                     </a>
                 </div>
                 <div class='content'>

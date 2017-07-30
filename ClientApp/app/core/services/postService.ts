@@ -21,6 +21,7 @@ export class PostService {
             this.posts[i].subreddit = new Subreddit();
             this.posts[i].subreddit.name = "news";
             this.posts[i].created = Date.now() + i;
+            this.posts[i].uriToImage = "https://madeby.google.com/static/images/google_g_logo.svg";
             this.posts[i].title = i.toFixed();
             this.posts[i].uri = "www.google.de";
         }
