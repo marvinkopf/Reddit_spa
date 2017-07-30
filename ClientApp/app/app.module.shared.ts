@@ -16,6 +16,7 @@ import { PostComponent } from './components/post/post.component';
 import { CreateSubComponent } from './components/createsub/createsub.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { LoginComponent } from './components/login/login.component';
+import { PrivacyPolicyComponent } from './components/privacypolicy/privacypolicy.component';
 
 import { AuthenticationService } from './core/services/authenticationService';
 import { UserService } from './core/services/userService';
@@ -36,6 +37,8 @@ import {
     providers
 } from 'angular2-modal/plugins/vex';
 
+import { CookieLawModule } from 'angular2-cookie-law';
+
 export const sharedConfig: NgModule = {
     bootstrap: [AppComponent],
     declarations: [
@@ -52,7 +55,8 @@ export const sharedConfig: NgModule = {
         SubmitComponent,
         PostComponent,
         CreateSubComponent,
-        LoginComponent
+        LoginComponent,
+        PrivacyPolicyComponent
     ],
     imports: [
         RouterModule.forRoot([
@@ -64,8 +68,10 @@ export const sharedConfig: NgModule = {
             { path:'submit', component: SubmitComponent },
             { path:'subreddits/create', component: CreateSubComponent },
             { path: 'login', component: LoginComponent },
+            { path: 'privacypolicy', component: PrivacyPolicyComponent },
             { path: '**', component: NotFoundComponent }
-        ])
+        ]),
+        CookieLawModule
     ],
     providers: [
         AuthenticationService,

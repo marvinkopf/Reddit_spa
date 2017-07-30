@@ -1,6 +1,6 @@
 import { ModalService } from '../../core/services/modalService';
 import { ViewEncapsulation, ViewChild, TemplateRef } from '@angular/core';
-import { Title }  from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from "@angular/core";
 
 @Component({
