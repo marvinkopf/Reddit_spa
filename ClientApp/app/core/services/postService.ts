@@ -72,7 +72,7 @@ export class PostService {
 
     public getPost(id: number): Observable<Post> {
         return Observable.create(observer => {
-            observer.next(this.posts[id]);
+            observer.next(this.posts.filter(post => post.postId == id)[0]);
             observer.complete();
         });}
 
