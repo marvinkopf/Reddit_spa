@@ -121,6 +121,10 @@ export class PostComponent implements OnInit, OnDestroy {
         return this.postService.GetNumberOfComments(this.post);
     }
 
+    isEmptyOrSpaces(str: string): boolean {
+        return str === null || str.match(/^ *$/) !== null;
+    }
+
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             this.postService.getPost(params['postId']).subscribe(post =>
