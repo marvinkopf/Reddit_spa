@@ -35,7 +35,7 @@ export class LoginComponent {
             return;
         }
 
-        this.authenticationService.Login(this.login_username, this.login_password).subscribe(
+        this.authenticationService.login(this.login_username, this.login_password).subscribe(
             null,
             err => this.loginErrorMessage = err,
             () => this.completeEvent.next()
@@ -56,7 +56,7 @@ export class LoginComponent {
             this.registerErrorMessage = "Passwords do not match."
         }
 
-        this.authenticationService.Register(
+        this.authenticationService.register(
             this.register_username,
             this.register_password,
             this.register_email).subscribe(

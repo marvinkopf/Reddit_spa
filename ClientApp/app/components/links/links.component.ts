@@ -33,12 +33,12 @@ export class LinksComponent {
         return str === null || str.match(/^ *$/) !== null;
     }
 
-    public login(): void {
+    login(): void {
         this.modalService.ShowLoginModal();
     }
 
-    public UserUpvoted(post: Post): boolean {
-        if (!this.authenticationService.IsLoggedIn())
+    userUpvoted(post: Post): boolean {
+        if (!this.authenticationService.isLoggedIn)
             return false;
 
         for (let i = 0; i < this.authenticationService.getUser().upvotedPosts.length; i++) {
@@ -49,8 +49,8 @@ export class LinksComponent {
         return false;
     }
 
-    public UserDownvoted(post: Post): boolean {
-        if (!this.authenticationService.IsLoggedIn())
+    userDownvoted(post: Post): boolean {
+        if (!this.authenticationService.isLoggedIn)
             return false;
 
         for (let i = 0; i < this.authenticationService.getUser().downvotedPosts.length; i++) {
@@ -61,8 +61,8 @@ export class LinksComponent {
         return false;
     }
 
-    public Upvote(post: Post): void {
-        if (!this.authenticationService.IsLoggedIn()) {
+    Upvote(post: Post): void {
+        if (!this.authenticationService.isLoggedIn) {
             this.modalService.ShowLoginModal();
             return;
         }
@@ -85,12 +85,12 @@ export class LinksComponent {
         this.authenticationService.getUser().upvotedPosts.push(post.postId);
     }
 
-    public GetNumberOfComments(post: Post): number {
-        return this.postService.GetNumberOfComments(post);
+    getNumberOfComments(post: Post): number {
+        return this.postService.getNumberOfComments(post);
     }
 
-    public Downvote(post: Post): void {
-        if (!this.authenticationService.IsLoggedIn()) {
+    Downvote(post: Post): void {
+        if (!this.authenticationService.isLoggedIn) {
             this.modalService.ShowLoginModal();
             return;
         }
@@ -113,7 +113,7 @@ export class LinksComponent {
         this.authenticationService.getUser().downvotedPosts.push(post.postId);
     }
 
-    public TimePassed(date: number): string {
+    timePassed(date: number): string {
         return "<1min";
     }
 }

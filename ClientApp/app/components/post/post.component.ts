@@ -23,16 +23,16 @@ export class PostComponent implements OnInit, OnDestroy {
         private postService: PostService,
         private commentService: CommentService) { }
 
-    public login(): void {
+    login(): void {
         this.modalService.ShowLoginModal();
     }
 
-    public UserLoggedIn(): boolean {
-        return this.authenticationService.IsLoggedIn();
+    userLoggedIn(): boolean {
+        return this.authenticationService.isLoggedIn;
     }
 
-    public UserUpvoted(post: Post): boolean {
-        if (!this.authenticationService.IsLoggedIn())
+    userUpvoted(post: Post): boolean {
+        if (!this.authenticationService.isLoggedIn)
             return false;
 
         for (let i = 0; i < this.authenticationService.getUser().upvotedPosts.length; i++) {
@@ -43,8 +43,8 @@ export class PostComponent implements OnInit, OnDestroy {
         return false;
     }
 
-    public UserDownvoted(post: Post): boolean {
-        if (!this.authenticationService.IsLoggedIn())
+    userDownvoted(post: Post): boolean {
+        if (!this.authenticationService.isLoggedIn)
             return false;
 
         for (let i = 0; i < this.authenticationService.getUser().downvotedPosts.length; i++) {
@@ -55,8 +55,8 @@ export class PostComponent implements OnInit, OnDestroy {
         return false;
     }
 
-    public Upvote(post: Post): void {
-        if (!this.authenticationService.IsLoggedIn()) {
+    upvote(post: Post): void {
+        if (!this.authenticationService.isLoggedIn) {
             this.modalService.ShowLoginModal();
             return;
         }
@@ -79,8 +79,8 @@ export class PostComponent implements OnInit, OnDestroy {
         this.authenticationService.getUser().upvotedPosts.push(post.postId);
     }
 
-    public Downvote(post: Post): void {
-        if (!this.authenticationService.IsLoggedIn()) {
+    downvote(post: Post): void {
+        if (!this.authenticationService.isLoggedIn) {
             this.modalService.ShowLoginModal();
             return;
         }
@@ -103,11 +103,11 @@ export class PostComponent implements OnInit, OnDestroy {
         this.authenticationService.getUser().downvotedPosts.push(post.postId);
     }
 
-    public TimePassed(date: number): string {
+    timePassed(date: number): string {
         return "<1min";
     }
 
-    public GetParentComments(): Comment[] {
+    getParentComments(): Comment[] {
         let comments = new Array<Comment>();
 
         for (let i = 0; i < this.comments.length; i++)
@@ -117,8 +117,8 @@ export class PostComponent implements OnInit, OnDestroy {
         return comments;
     }
 
-    public GetNumberOfComments(): number {
-        return this.postService.GetNumberOfComments(this.post);
+    getNumberOfComments(): number {
+        return this.postService.getNumberOfComments(this.post);
     }
 
     isEmptyOrSpaces(str: string): boolean {

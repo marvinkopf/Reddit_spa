@@ -7,26 +7,26 @@ import { ApplicationUser } from "../domain/applicationUser";
 
 @Injectable()
 export class AuthenticationService {
-    isLoggedIn: boolean = false;
+    _isLoggedIn: boolean = false;
     user: ApplicationUser;
 
     constructor(private http: Http) { }
 
-    public IsLoggedIn(): boolean {
-        return this.isLoggedIn;
+    get isLoggedIn(): boolean {
+        return this._isLoggedIn;
     }
 
-    public Login(username: string, password: string): Observable<void> {
-        this.isLoggedIn = true;
+    public login(username: string, password: string): Observable<void> {
+        this._isLoggedIn = true;
         return Observable.empty<void>();
     }
 
-    public Logout(): Observable<void> {
-        this.isLoggedIn = false;
+    public logout(): Observable<void> {
+        this._isLoggedIn = false;
         return Observable.empty<void>();
     }
 
-    public Register(username: string, password: string, email: string): Observable<void> {
+    public register(username: string, password: string, email: string): Observable<void> {
         return Observable.throw("Server cannot be reached.");
     }
 
@@ -38,7 +38,7 @@ export class AuthenticationService {
             this.user.downvotedPosts = new Array<number>();
         }
 
-        if (this.IsLoggedIn())
+        if (this.isLoggedIn)
             return this.user;
 
         return null;

@@ -1,13 +1,13 @@
 <div class='sidebar'>
     <ul class='sidebar-links'>
         <li>
-            <a *ngIf='UserLoggedIn()' [routerLink]="['/submit']" class=''>Submit Link</a>
-            <a *ngIf='!UserLoggedIn()' href='javascript:void(0)'
+            <a *ngIf='userLoggedIn()' [routerLink]="['/submit']" class=''>Submit Link</a>
+            <a *ngIf='!userLoggedIn()' href='javascript:void(0)'
                 (click)='login()' class=''>Submit Link</a>
         </li>
         <li>
-            <a *ngIf='UserLoggedIn()' [routerLink]="['/subreddits/create']" class=''>Create Subreddit</a>
-            <a *ngIf='!UserLoggedIn()' href='javascript:void(0)'
+            <a *ngIf='userLoggedIn()' [routerLink]="['/subreddits/create']" class=''>Create Subreddit</a>
+            <a *ngIf='!userLoggedIn()' href='javascript:void(0)'
                 (click)='login()' class=''>Create Subreddit</a>
         </li>
     </ul>

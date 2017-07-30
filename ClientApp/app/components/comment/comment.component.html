@@ -1,14 +1,14 @@
 <div class='comment' [ngStyle]="{ 'background-color' : backgroundColor }">
     <div class='upvote-btn comment-upvote-btn' [style.visibility]="isCollapsed ? 'hidden' : 'inherited'">
-        <span [style.color]="UserUpvoted(post) ? 'orange' : ''" class='upvote' (click)='Upvote(post)'>
+        <span [style.color]="userUpvoted(post) ? 'orange' : ''" class='upvote' (click)='upvote(post)'>
                     </span><br>
-        <span [style.color]="UserDownvoted(post) ? 'blue' : ''" class='downvote' (click)='Downvote(post)'>
+        <span [style.color]="userDownvoted(post) ? 'blue' : ''" class='downvote' (click)='downvote(post)'>
                     </span>
     </div>
     <div class='content' style="margin-top:5px;margin-left:-5px;margin-bottom:5px;">
         <div>
             <div>
-                <a href='javascript:void(0);' class='expander' (click)='Collapse()' style="font-size:small">
+                <a href='javascript:void(0);' class='expander' (click)='collapse()' style="font-size:small">
                     {{isCollapsed ? '[+]' : '[-]'}}
                 </a>
                 <a class='author' [routerLink]="['/user', comment.creator.userName]">{{comment.creator.userName}}</a>
@@ -17,8 +17,8 @@
                 <span class='text' *ngIf='!isCollapsed'>{{comment.text}}</span>
             </div>
             <div class='sub' *ngIf='!isCollapsed'>
-                <a href='javascript:void(0);' (click)='ShowReply()'>reply</a>
-                <a href='javascript:void(0);' (click)='ShowHideChildComments()' *ngIf='comment.children?.length > 0'>
+                <a href='javascript:void(0);' (click)='doShowReply()'>reply</a>
+                <a href='javascript:void(0);' (click)='showHideChildComments()' *ngIf='comment.children?.length > 0'>
                     {{showChildComments ? "hide child comments" : "show " + comment.children.length + " child comments"}}
                 </a>
             </div>
@@ -26,8 +26,8 @@
 
         <div class='comment-input' *ngIf='showReply'>
             <textarea [(ngModel)]='replyText' id="Txt" name="Txt" value=""></textarea><br>
-            <button (click)='Reply()'>Submit</button>
-            <button (click)='CancelReply()'>Cancel</button>
+            <button (click)='reply()'>Submit</button>
+            <button (click)='cancelReply()'>Cancel</button>
         </div>
 
         <ul *ngIf='!isCollapsed && showChildComments'>

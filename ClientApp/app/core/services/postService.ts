@@ -37,7 +37,7 @@ export class PostService {
         return null;
     }
 
-    public GetNumberOfComments(post: Post): number {
+    public getNumberOfComments(post: Post): number {
         return 30;
     }
 

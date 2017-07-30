@@ -29,15 +29,15 @@ export class CommentComponent {
         private authenticationService: AuthenticationService,
         private commentService: CommentService) { }
 
-    public ShowHideChildComments(): void {
+    showHideChildComments(): void {
         this.showChildComments = !this.showChildComments;
     }
 
-    public Collapse(): void {
+    collapse(): void {
         this.isCollapsed = !this.isCollapsed;
     }
 
-    public Reply(): void {
+    reply(): void {
         let comment = new Comment();
         comment.postId = this.comment.postId;
         comment.text = this.replyText;
@@ -56,36 +56,36 @@ export class CommentComponent {
         this.replyText = '';
     }
 
-    public UserLoggedIn(): boolean {
-        return this.authenticationService.IsLoggedIn();
+    userLoggedIn(): boolean {
+        return this.authenticationService.isLoggedIn;
     }
 
-    public UserUpvoted(comment: Comment): boolean {
-        if (!this.authenticationService.IsLoggedIn())
+    userUpvoted(comment: Comment): boolean {
+        if (!this.authenticationService.isLoggedIn)
             return false;
     }
 
-    public UserDownvoted(comment: Comment): boolean {
-        if (!this.authenticationService.IsLoggedIn())
+    userDownvoted(comment: Comment): boolean {
+        if (!this.authenticationService.isLoggedIn)
             return false;
     }
 
-    public Upvote(comment: Comment): void {
-        if (!this.authenticationService.IsLoggedIn()) {
+    upvote(comment: Comment): void {
+        if (!this.authenticationService.isLoggedIn) {
             this.modalService.ShowLoginModal();
             return;
         }
     }
 
-    public Downvote(comment: Comment): void {
-        if (!this.authenticationService.IsLoggedIn()) {
+    downvote(comment: Comment): void {
+        if (!this.authenticationService.isLoggedIn) {
             this.modalService.ShowLoginModal();
             return;
         }
     }
 
-    public ShowReply(): void {
-        if (!this.authenticationService.IsLoggedIn()) {
+    doShowReply(): void {
+        if (!this.authenticationService.isLoggedIn) {
             this.modalService.ShowLoginModal();
             return;
         }
@@ -95,7 +95,7 @@ export class CommentComponent {
         this.showReply = true;
     }
 
-    public CancelReply(): void {
+    cancelReply(): void {
         this.showReply = false;
     }
 }

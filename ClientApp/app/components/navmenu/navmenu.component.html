@@ -5,12 +5,12 @@
         </div>
         <div class=''>
             <div id='menu' class=''>
-                <div *ngIf='!UserLoggedIn()'>
+                <div *ngIf='!userLoggedIn()'>
                     <a (click)='login()'>
                         Log in or register
                     </a>
                 </div>
-                <div *ngIf='UserLoggedIn()'>
+                <div *ngIf='userLoggedIn()'>
                     <a [routerLink]="['/user', getUserName()]">
                         {{getUserName()}}
                     </a>

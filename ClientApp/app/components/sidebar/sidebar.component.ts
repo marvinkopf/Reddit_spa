@@ -11,11 +11,11 @@ export class SidebarComponent {
     constructor(private modalService: ModalService,
         private authenticationService: AuthenticationService) { }
 
-    public login(): void {
+    login(): void {
         this.modalService.ShowLoginModal();
     }
 
-    public UserLoggedIn(): boolean {
-        return this.authenticationService.IsLoggedIn();
+    userLoggedIn(): boolean {
+        return this.authenticationService.isLoggedIn;
     }
 }

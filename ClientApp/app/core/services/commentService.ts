@@ -52,7 +52,7 @@ export class CommentService {
         });
     }
 
-    public GetCommentsFromUser(userId: number): Observable<Comment[]> {
+    public getCommentsFromUser(userId: number): Observable<Comment[]> {
         let comments = new Array<Comment>();
 
         for (let i = 0; i < 30; i++) {
@@ -81,15 +81,15 @@ export class CommentService {
         return null;
     }
 
-    public Upvote(comment: Comment) {
+    public upvote(comment: Comment) {
 
     }
 
-    public Downvote(comment: Comment) {
+    public downvote(comment: Comment) {
 
     }
 
-    public ClearVote(comment: Comment) {
+    public clearVote(comment: Comment) {
 
     }
 

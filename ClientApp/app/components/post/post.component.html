@@ -1,12 +1,12 @@
 <div class="main-content">
     <div class='post'>
         <div class='upvote-btn'>
-            <span [style.color]="UserUpvoted(post) ? 'orange' : ''" class='upvote' (click)='Upvote(post)'>
+            <span [style.color]="userUpvoted(post) ? 'orange' : ''" class='upvote' (click)='upvote(post)'>
                     </span>
-            <div [style.color]="UserUpvoted(post) ? 'orange' : UserDownvoted(post) ? 'blue' : ''" class='vote-score'>
+            <div [style.color]="userUpvoted(post) ? 'orange' : userDownvoted(post) ? 'blue' : ''" class='vote-score'>
                 {{ post.score }}
             </div>
-            <span [style.color]="UserDownvoted(post) ? 'blue' : ''" class='downvote' (click)='Downvote(post)'>
+            <span [style.color]="userDownvoted(post) ? 'blue' : ''" class='downvote' (click)='downvote(post)'>
                     </span>
         </div>
         <div class='image'>
@@ -18,7 +18,7 @@
         <div class='content'>
             <a class='post-title' href='//{{post.uri}}'>{{post.title}}</a><br>
             <div class='sub'>
-                submitted {{TimePassed(post.created)}} ago by
+                submitted {{timePassed(post.created)}} ago by
                 <template [ngIf]='post.creator != null'>
                     <a class='creator' [routerLink]="['/user', post.creator.userName]">{{post.creator.userName}}</a>
                 </template>
@@ -27,18 +27,18 @@
                 </template>
             </div>
             <div class='sub-2'>
-                <a [routerLink]="['/r', post.subreddit.name, 'comments', post.postId]">{{GetNumberOfComments()}} comments</a>
+                <a [routerLink]="['/r', post.subreddit.name, 'comments', post.postId]">{{getNumberOfComments()}} comments</a>
             </div>
         </div>
     </div>
 
-    <div *ngIf='UserLoggedIn()' style="margin-left:10px">
+    <div *ngIf='userLoggedIn()' style="margin-left:10px">
         <textarea class="comment-input" id="Txt" name="Txt" value=""></textarea><br>
         <input type="submit" class="button">
     </div>
 
     <ul style="margin-left:10px;">
-        <li *ngFor='let comment of GetParentComments()' style="display: block">
+        <li *ngFor='let comment of getParentComments()' style="display: block">
             <comment [comment]='comment' [backgroundColor]="'white'"></comment>
         </li>
     </ul>

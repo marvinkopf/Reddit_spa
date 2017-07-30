@@ -17,8 +17,8 @@ export class NavMenuComponent {
      private modalService: ModalService) {
     }
 
-    UserLoggedIn(): boolean {
-        return this.authenticationService.IsLoggedIn();
+    userLoggedIn(): boolean {
+        return this.authenticationService.isLoggedIn;
     }
 
     login(): void {
@@ -26,7 +26,7 @@ export class NavMenuComponent {
     }
 
     logoff(): void {
-        this.authenticationService.Logout();
+        this.authenticationService.logout();
     }
 
     getUserName(): string {

@@ -16,7 +16,7 @@ export class CreateSubComponent implements OnInit {
         private router: Router) { }
 
     ngOnInit() {
-        if (!this.authenticationService.IsLoggedIn())
+        if (!this.authenticationService.isLoggedIn)
             this.router.navigate(['/login'], { queryParams: { dest: 'subreddit/create' } });
     }
 

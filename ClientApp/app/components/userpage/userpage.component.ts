@@ -38,12 +38,12 @@ export class UserPageComponent implements OnInit, OnDestroy {
                 this.router.navigateByUrl('./NotFound', { skipLocationChange: true });
 
             this.postService.getPostsFromUser(0).subscribe(posts => this.posts = posts);
-            this.commentService.GetCommentsFromUser(0).subscribe(comments => this.comments = comments);
+            this.commentService.getCommentsFromUser(0).subscribe(comments => this.comments = comments);
         });
     }
 
-    public UserUpvoted(post: Post): boolean {
-        if (!this.authenticationService.IsLoggedIn())
+    userUpvoted(post: Post): boolean {
+        if (!this.authenticationService.isLoggedIn)
             return false;
 
         for (let i = 0; i < this.authenticationService.getUser().upvotedPosts.length; i++) {
@@ -54,8 +54,8 @@ export class UserPageComponent implements OnInit, OnDestroy {
         return false;
     }
 
-    public UserDownvoted(post: Post): boolean {
-        if (!this.authenticationService.IsLoggedIn())
+    userDownvoted(post: Post): boolean {
+        if (!this.authenticationService.isLoggedIn)
             return false;
 
         for (let i = 0; i < this.authenticationService.getUser().downvotedPosts.length; i++) {
@@ -66,12 +66,12 @@ export class UserPageComponent implements OnInit, OnDestroy {
         return false;
     }
 
-    public TimePassed(date: number): string {
+    timePassed(date: number): string {
         return "<1min";
     }
 
-    public Upvote(post: Post): void {
-        if (!this.authenticationService.IsLoggedIn()) {
+    upvote(post: Post): void {
+        if (!this.authenticationService.isLoggedIn) {
             this.modalService.ShowLoginModal();
             return;
         }
@@ -94,12 +94,12 @@ export class UserPageComponent implements OnInit, OnDestroy {
         this.authenticationService.getUser().upvotedPosts.push(post.postId);
     }
 
-    public GetNumberOfComments(post: Post): number {
-        return this.postService.GetNumberOfComments(post);
+    getNumberOfComments(post: Post): number {
+        return this.postService.getNumberOfComments(post);
     }
 
-    public Downvote(post: Post): void {
-        if (!this.authenticationService.IsLoggedIn()) {
+    downvote(post: Post): void {
+        if (!this.authenticationService.isLoggedIn) {
             this.modalService.ShowLoginModal();
             return;
         }
