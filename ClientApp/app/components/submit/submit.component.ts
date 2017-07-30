@@ -43,5 +43,7 @@ export class SubmitComponent implements OnInit {
         post.subreddit = subreddit;
 
         this.postService.addPost(post);
+
+        this.router.navigate(['/']);
     }
 }
