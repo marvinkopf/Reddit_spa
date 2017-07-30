@@ -13,6 +13,9 @@ export class LinksComponent {
     @Input()
     posts: Post[];
 
+    @Input()
+    showSub: boolean;
+
     postsByDate(): Post[] {
         return this.posts.sort((p1, p2) => {
             if (p1.created > p2.created)

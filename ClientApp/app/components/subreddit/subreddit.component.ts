@@ -7,8 +7,7 @@ import { Title } from '@angular/platform-browser';
 @Component({
     selector: 'subreddit',
     templateUrl: './subreddit.component.html',
-    styleUrls: ['./subreddit.component.css'],
-    providers: [PostService]
+    styleUrls: ['./subreddit.component.css']
 })
 export class SubredditComponent implements OnInit, OnDestroy {
     posts: Post[] = new Array<Post>();
