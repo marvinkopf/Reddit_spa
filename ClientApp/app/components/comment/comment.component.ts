@@ -5,6 +5,8 @@ import { AuthenticationService } from "../../core/services/authenticationService
 import { ApplicationUser } from "../../core/domain/applicationUser";
 import { Comment } from "../../core/domain/comment";
 
+import { CommentService } from "../../core/services/commentService";
+
 @Component({
     selector: 'comment',
     templateUrl: './comment.component.html',
@@ -24,7 +26,8 @@ export class CommentComponent {
     isCollapsed: boolean = false;
 
     constructor(private modalService: ModalService,
-        private authenticationService: AuthenticationService) { }
+        private authenticationService: AuthenticationService,
+        private commentService: CommentService) { }
 
     public ShowHideChildComments(): void {
         this.showChildComments = !this.showChildComments;
@@ -46,6 +49,8 @@ export class CommentComponent {
         comment.parent = this.comment;
         comment.children = new Array<Comment>();
         this.comment.children.push(comment);
+
+        this.commentService.addComment(comment);
 
         this.showReply = false;
         this.replyText = '';
