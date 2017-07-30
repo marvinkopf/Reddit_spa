@@ -11,7 +11,7 @@
                 <a href='javascript:void(0);' class='expander' (click)='Collapse()' style="font-size:small">
                     {{isCollapsed ? '[+]' : '[-]'}}
                 </a>
-                <a class='author'>{{comment.creator.userName}}</a>
+                <a class='author' [routerLink]="['/user', comment.creator.userName]">{{comment.creator.userName}}</a>
                 <span class='score'>{{comment.score}} points</span>
                 <span class='date'> <1min ago</span><br>
                 <span class='text' *ngIf='!isCollapsed'>{{comment.text}}</span>
