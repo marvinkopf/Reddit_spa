@@ -4,27 +4,19 @@
             <div class='count'>{{i+1}}</div>
             <div class='post'>
                 <div class='upvote-btn'>
-                    <span
-                        [style.color]="UserUpvoted(post) ? 'orange' : ''"
-                        class='upvote'
-                        (click)='Upvote(post)'>
+                    <span [style.color]="UserUpvoted(post) ? 'orange' : ''" class='upvote' (click)='Upvote(post)'>
                     </span>
-                    <div
-                        [style.color]=
-                            "UserUpvoted(post) ? 'orange' : UserDownvoted(post) ? 'blue' : ''"
-                        class='vote-score'>
+                    <div [style.color]="UserUpvoted(post) ? 'orange' : UserDownvoted(post) ? 'blue' : ''" class='vote-score'>
                         {{ post.score }}
                     </div>
-                    <span
-                        [style.color]="UserDownvoted(post) ? 'blue' : ''"
-                        class='downvote'
-                        (click)='Downvote(post)'>
+                    <span [style.color]="UserDownvoted(post) ? 'blue' : ''" class='downvote' (click)='Downvote(post)'>
                     </span>
                 </div>
                 <div class='image'>
                     <a href='//{{post.uri}}'>
-                        <img *ngIf='post.uri == null' src='https://cdn2.iconfinder.com/data/icons/network-roundline/512/link-512.png' style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
-                        <img *ngIf='post.uri != null' src='{{post.uriToImage}}' style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
+                        <img *ngIf='isEmptyOrSpaces(post.uriToImage)' src='https://cdn2.iconfinder.com/data/icons/network-roundline/512/link-512.png'
+                            style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
+                            <img *ngIf='!isEmptyOrSpaces(post.uriToImage)' src='{{post.uriToImage}}' style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
                     </a>
                 </div>
                 <div class='content'>

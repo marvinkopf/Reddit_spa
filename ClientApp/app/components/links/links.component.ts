@@ -26,6 +26,10 @@ export class LinksComponent {
         private modalService: ModalService,
         private postService: PostService) { }
 
+    isEmptyOrSpaces(str: string): boolean {
+        return str === null || str.match(/^ *$/) !== null;
+    }
+
     public login(): void {
         this.modalService.ShowLoginModal();
     }
