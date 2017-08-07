@@ -22,6 +22,7 @@ import { AuthenticationService } from './core/services/authenticationService';
 import { UserService } from './core/services/userService';
 import { PostService } from './core/services/postService';
 import { CommentService } from './core/services/commentService';
+import { SubredditService } from './core/services/subredditService';
 
 import { Overlay, OverlayRenderer, DOMOverlayRenderer } from "angular2-modal";
 import { overlayConfigFactory } from "angular2-modal";
@@ -78,6 +79,7 @@ export const sharedConfig: NgModule = {
         UserService,
         PostService,
         CommentService,
+        SubredditService,
         Title,
         Modal,
         Overlay,
