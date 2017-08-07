@@ -18,8 +18,9 @@ export class SubredditService {
         this.subreddits["news"] = subreddit;
     }
 
-    public addSubreddit(subreddit: Subreddit): void {
-        return null;
+    public addSubreddit(subreddit: Subreddit): Observable<void> {
+        this.subreddits[subreddit.name] = subreddit;
+        return Observable.empty<void>();
     }
 
     public getSubreddits(): Observable<{ [id: string]: Subreddit }> {
