@@ -43,14 +43,12 @@ export class AuthenticationService {
         });
     }
 
-    public logout(): Observable<void> {
-        return Observable.create(observer => {
-            this.http.post("account/logout", null)
-                .subscribe(response => {
-                    this._isLoggedIn = false;
-                    this.user = null;
-                }, null, () => observer.complete());
-        });
+    public logout(): void {
+        this.http.post("account/logout", null)
+            .subscribe(response => {
+                this._isLoggedIn = false;
+                this.user = null;
+            });
     }
 
     public register(username: string, password: string, email: string): Observable<void> {
