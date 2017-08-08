@@ -17,17 +17,49 @@ export class AuthenticationService {
     }
 
     public login(username: string, password: string): Observable<void> {
-        this._isLoggedIn = true;
-        return Observable.empty<void>();
+        let data = { UserName: username, Password: password };
+        let body = JSON.stringify(data);
+        let headers = new Headers({
+            "Content-Type": "application/json; charset=utf-8",
+            "Accept": "application/json"
+        });
+        let options = new RequestOptions({ headers: headers });
+
+        return Observable.create(observer => {
+            this.http.post("account/login", body, options)
+                .subscribe(response => {
+                    if (response.status == 204)
+                        observer.error();
+                    else
+                        this._isLoggedIn = true;
+                }, null, () => observer.complete());
+        });
     }
 
     public logout(): Observable<void> {
-        this._isLoggedIn = false;
-        return Observable.empty<void>();
+        return Observable.create(observer => {
+            this.http.post("account/logout", null)
+                .subscribe(response => {
+                    this._isLoggedIn = false;
+                }, null, () => observer.complete());
+        });
     }
 
     public register(username: string, password: string, email: string): Observable<void> {
-        return Observable.throw("Server cannot be reached.");
+        let data = { UserName: username, Password: password, confirmPassword: password };
+        let body = JSON.stringify(data);
+        let headers = new Headers({
+            "Content-Type": "application/json; charset=utf-8",
+            "Accept": "application/json"
+        });
+        let options = new RequestOptions({ headers: headers });
+
+        return Observable.create(observer => {
+            this.http.post("account/register", body, options)
+                .subscribe(response => {
+                    this._isLoggedIn = true;
+                }, null, () => observer.complete());
+        });
     }
 
     public getUser(): ApplicationUser {
