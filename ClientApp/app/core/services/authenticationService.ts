@@ -31,7 +31,14 @@ export class AuthenticationService {
                     if (response.status == 204)
                         observer.error('User name or password wrong.');
                     else
-                        this._isLoggedIn = true;
+                        this.http.get("api/user/userinfo").map(res => res.json()).subscribe(user => {
+                            this.user = new ApplicationUser();
+                            this.user.userName = user.userName;
+                            this.user.downvotedPosts = new Array<number>();
+                            this.user.upvotedPosts = new Array<number>();
+
+                            this._isLoggedIn = true;
+                        });
                 }, null, () => observer.complete());
         });
     }
@@ -41,6 +48,7 @@ export class AuthenticationService {
             this.http.post("account/logout", null)
                 .subscribe(response => {
                     this._isLoggedIn = false;
+                    this.user = null;
                 }, null, () => observer.complete());
         });
     }
@@ -57,22 +65,15 @@ export class AuthenticationService {
         return Observable.create(observer => {
             this.http.post("account/register", body, options)
                 .subscribe(response => {
-                    this._isLoggedIn = true;
+                    this.http.get("api/user/userinfo").map(res => res.json()).subscribe(user => {
+                        this.user = user;
+                        this._isLoggedIn = true;
+                    });
                 }, null, () => observer.complete());
         });
     }
 
     public getUser(): ApplicationUser {
-        if (this.user == null) {
-            this.user = new ApplicationUser();
-            this.user.userName = "Olaf";
-            this.user.upvotedPosts = new Array<number>();
-            this.user.downvotedPosts = new Array<number>();
-        }
-
-        if (this.isLoggedIn)
-            return this.user;
-
-        return null;
+        return this.user;
     }
 }
