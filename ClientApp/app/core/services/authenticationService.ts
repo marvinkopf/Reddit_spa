@@ -29,7 +29,7 @@ export class AuthenticationService {
             this.http.post("account/login", body, options)
                 .subscribe(response => {
                     if (response.status == 204)
-                        observer.error();
+                        observer.error('User name or password wrong.');
                     else
                         this._isLoggedIn = true;
                 }, null, () => observer.complete());
