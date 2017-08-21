@@ -2,7 +2,7 @@ import { ApplicationUser } from './applicationUser';
 
 export class Comment {
     commentId: number;
-    text: string;
+    txt: string;
     creator: ApplicationUser;
     score: number;
     created: number;

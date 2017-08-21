@@ -40,7 +40,7 @@ export class CommentComponent {
     reply(): void {
         let comment = new Comment();
         comment.postId = this.comment.postId;
-        comment.text = this.replyText;
+        comment.txt = this.replyText;
         comment.creator = new ApplicationUser();
         comment.creator.userName = "Gustav";
         comment.created = Date.now();

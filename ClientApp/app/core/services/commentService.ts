@@ -18,7 +18,7 @@ export class CommentService {
                 let comment = new Comment();
                 comment.commentId = j + i;
                 comment.postId = j;
-                comment.text = i.toString();
+                comment.txt = i.toString();
                 comment.creator = new ApplicationUser();
                 comment.creator.userName = "Gustav";
                 comment.created = Date.now();
@@ -58,7 +58,7 @@ export class CommentService {
         for (let i = 0; i < 30; i++) {
             let comment = new Comment();
             comment.commentId = i;
-            comment.text = i.toString();
+            comment.txt = i.toString();
             comment.creator = new ApplicationUser();
             comment.creator.userName = "Gustav";
             comment.created = Date.now();
