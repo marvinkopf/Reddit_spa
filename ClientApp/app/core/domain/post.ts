@@ -6,8 +6,8 @@ export class Post {
     created: number;
     creator: ApplicationUser;
     title: string;
-    uri: string;
-    uriToImage: string;
+    link: string;
+    urlToImage: string;
     subreddit: Subreddit;
     score: number;
 }

@@ -10,13 +10,13 @@
                     </span>
         </div>
         <div class='image'>
-            <a href='//{{post.uri}}'>
-                <img *ngIf='isEmptyOrSpaces(post.uriToImage)' src='https://cdn2.iconfinder.com/data/icons/network-roundline/512/link-512.png' style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
-                <img *ngIf='!isEmptyOrSpaces(post.uriToImage)' src='{{post.uriToImage}}' style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
+            <a href='//{{post.link}}'>
+                <img *ngIf='isEmptyOrSpaces(post.urlToImage)' src='https://cdn2.iconfinder.com/data/icons/network-roundline/512/link-512.png' style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
+                <img *ngIf='!isEmptyOrSpaces(post.urlToImage)' src='{{post.urlToImage}}' style='width:70px;height:70px;margin-left:10px;margin-bottom:10px;'>
             </a>
         </div>
         <div class='content'>
-            <a class='post-title' href='//{{post.uri}}'>{{post.title}}</a><br>
+            <a class='post-title' href='//{{post.link}}'>{{post.title}}</a><br>
             <div class='sub'>
                 submitted {{timePassed(post.created)}} ago by
                 <template [ngIf]='post.creator != null'>

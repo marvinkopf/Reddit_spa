@@ -19,5 +19,7 @@ namespace Reddit.Data
                 // Add your customizations after calling base.OnModelCreating(builder);
 
         }
+
+        public DbSet<Post> Posts { get; set; }
     }
 }

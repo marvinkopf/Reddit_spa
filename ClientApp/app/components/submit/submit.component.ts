@@ -34,8 +34,8 @@ export class SubmitComponent implements OnInit {
 
         let post = new Post();
         post.creator = this.authenticationService.getUser();
-        post.uri = this.url;
-        post.uriToImage = this.urlToImage;
+        post.link = this.url;
+        post.urlToImage = this.urlToImage;
         post.title = this.title;
 
         let subreddit = new Subreddit();
