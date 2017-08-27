@@ -14,6 +14,8 @@ namespace Reddit.Models
 
         public string CreatorId { get; set; }
 
+        public ApplicationUser Creator { get; set; }
+
         public DateTime Created { get; set; }
 
         public string Link { get; set; }

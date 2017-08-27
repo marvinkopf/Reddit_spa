@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Reddit.Data;
 using Reddit.Models;
 
@@ -23,7 +24,7 @@ namespace Reddit.Controllers
 
         public IEnumerable<Post> Top()
         {
-            return _context.Posts.Take(30);
+            return _context.Posts.Include(p => p.Creator).Take(30);
         }
 
         public IActionResult Error()
