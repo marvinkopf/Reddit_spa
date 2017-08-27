@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Reddit.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     public class PostController : Controller
     {
@@ -46,9 +45,13 @@ namespace Reddit.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Post(string title, string link, string subreddit,
-            string urlToImage)
+        public async Task<IActionResult> Post([FromBody]Post post)
         {
+            string title = post.Title;
+            string link = post.Link;
+            string subreddit = post.Subreddit;
+            string urlToImage = post.UrlToImage;
+
             if (String.IsNullOrWhiteSpace(subreddit))
             {
                 this.Response.StatusCode = 409;
@@ -74,12 +77,13 @@ namespace Reddit.Controllers
                 return this.Content("No valid link");
             }
 
-            var post = new Post() {
+            post = new Post() {
                 Title = title,
                 Link = link,
                 Subreddit = subreddit,
                 Created = DateTime.Now,
-                UrlToImage = urlToImage
+                UrlToImage = urlToImage,
+                CreatorId = _manager.GetUserId(HttpContext.User)
             };
 
             _context.Posts.Add(post);

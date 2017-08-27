@@ -41,10 +41,10 @@
                         <template [ngIf]='post.creator == null'>
                             [deleted]
                         </template>
-                        in <a class='creator' [routerLink]="['/r', post.subreddit.name]">r/{{post.subreddit.name}}</a>
+                        in <a class='creator' [routerLink]="['/r', post.subreddit]">r/{{post.subreddit}}</a>
                     </div>
                     <div class='sub-2'>
-                        <a [routerLink]="['/r', post.subreddit.name, 'comments', post.postId]">{{getNumberOfComments(post)}} comments</a>
+                        <a [routerLink]="['/r', post.subreddit, 'comments', post.postId]">{{getNumberOfComments(post)}} comments</a>
                     </div>
                 </div>
             </div>

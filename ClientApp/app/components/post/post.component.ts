@@ -13,7 +13,7 @@ import { CommentService } from '../../core/services/commentService';
     styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit, OnDestroy {
-    post: Post;
+    post: Post = new Post();
     comments: Comment[];
     sub: any;
 
@@ -122,7 +122,7 @@ export class PostComponent implements OnInit, OnDestroy {
     }
 
     isEmptyOrSpaces(str: string): boolean {
-        return str === null || str.match(/^ *$/) !== null;
+        return str == null || str.match(/^ *$/) !== null;
     }
 
     ngOnInit() {

@@ -38,9 +38,7 @@ export class SubmitComponent implements OnInit {
         post.urlToImage = this.urlToImage;
         post.title = this.title;
 
-        let subreddit = new Subreddit();
-        subreddit.name = this.subreddit;
-        post.subreddit = subreddit;
+        post.subreddit = this.subreddit;
 
         this.postService.addPost(post);
 

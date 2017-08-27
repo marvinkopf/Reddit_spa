@@ -8,6 +8,6 @@ export class Post {
     title: string;
     link: string;
     urlToImage: string;
-    subreddit: Subreddit;
+    subreddit: string;
     score: number;
 }
