@@ -10,7 +10,6 @@ import { LoginModalComponent } from './components/loginModal/loginModal.componen
 import { VexModalModule } from 'angular2-modal/plugins/vex';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CookieLawModule } from 'angular2-cookie-law';
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
@@ -21,7 +20,6 @@ import { CookieLawModule } from 'angular2-cookie-law';
         HttpModule,
         VexModalModule,
         BrowserAnimationsModule,
-        CookieLawModule,
         ...sharedConfig.imports
     ],
     providers: [

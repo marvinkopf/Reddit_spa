@@ -38,7 +38,6 @@ import {
     providers
 } from 'angular2-modal/plugins/vex';
 
-import { CookieLawModule } from 'angular2-cookie-law';
 
 export const sharedConfig: NgModule = {
     bootstrap: [AppComponent],
@@ -71,8 +70,7 @@ export const sharedConfig: NgModule = {
             { path: 'login', component: LoginComponent },
             { path: 'privacypolicy', component: PrivacyPolicyComponent },
             { path: '**', component: NotFoundComponent }
-        ]),
-        CookieLawModule
+        ])
     ],
     providers: [
         AuthenticationService,
