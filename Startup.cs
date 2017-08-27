@@ -45,7 +45,7 @@ namespace Reddit
                         o.Password.RequireLowercase = false;
                         o.Password.RequireUppercase = false;
                         o.Password.RequireNonAlphanumeric = false;
-                        o.Password.RequiredLength = 6;
+                        o.Password.RequiredLength = 1;
                     })
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();

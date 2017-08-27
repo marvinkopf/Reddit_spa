@@ -14,7 +14,7 @@ export class AuthenticationService {
 
     get isLoggedIn(): boolean {
         return this._isLoggedIn;
-    }
+    }gedIn
 
     public login(username: string, password: string): Observable<void> {
         let data = { UserName: username, Password: password };
@@ -67,6 +67,8 @@ export class AuthenticationService {
                         observer.error('Error.');
                     else
                         this.http.get("api/user/userinfo").map(res => res.json()).subscribe(user => {
+                            user.upvotedPosts = [];
+                            user.downvotedPosts = [];
                             this.user = user;
                             this._isLoggedIn = true;
                         });
