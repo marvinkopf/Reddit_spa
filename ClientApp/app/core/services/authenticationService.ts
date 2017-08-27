@@ -63,10 +63,13 @@ export class AuthenticationService {
         return Observable.create(observer => {
             this.http.post("account/register", body, options)
                 .subscribe(response => {
-                    this.http.get("api/user/userinfo").map(res => res.json()).subscribe(user => {
-                        this.user = user;
-                        this._isLoggedIn = true;
-                    });
+                    if (response.status == 204)
+                        observer.error('Error.');
+                    else
+                        this.http.get("api/user/userinfo").map(res => res.json()).subscribe(user => {
+                            this.user = user;
+                            this._isLoggedIn = true;
+                        });
                 }, null, () => observer.complete());
         });
     }
