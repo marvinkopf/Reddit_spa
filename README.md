@@ -1,4 +1,4 @@
-Todoapp build with ASP NET CORE + Angular2. A lot of the frontend done, but not at all usable yet
+Reddit clone build with ASP NET CORE + Angular2. A lot of the frontend done, but not at all usable yet
 
 Uses
 
